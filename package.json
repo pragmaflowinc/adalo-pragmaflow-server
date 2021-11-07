@@ -1,0 +1,10 @@
+{
+  "name": "adalo-pragmaflow-server",
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "(cd client && yarn install); (cd server && yarn install)",
+    "build": "(cd client && yarn build); (cd server && yarn build)",
+    "postbuild": "yes | cp -rf -R -T client/build server/dist/client",
+    "package:prod": "yarn setup && yarn build && yarn postbuild"
+  }
+}

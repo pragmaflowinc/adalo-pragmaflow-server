@@ -71,8 +71,6 @@ export class AdaloResolver {
     @Arg("organizationId") organizationId: string,
     @Arg("sessionToken") sessionToken: string
   ) {
-    // https://proton-backend.herokuapp.com/organizations/323168/marketplace/fd843eeb-d8b3-4ba4-bc94-f65d6252ca4a
-    // https://component-registry.herokuapp.com/api/libraries/fd843eeb-d8b3-4ba4-bc94-f65d6252ca4a/installs
     var step1 = {
       method: 'post',
       url: `https://proton-backend.herokuapp.com/organizations/${organizationId}/marketplace/${componentId}`,
@@ -83,9 +81,7 @@ export class AdaloResolver {
         libraryName
       }
     } as any;
-    console.log(step1)
-    const response1 = await axios(step1)
-    console.log(response1)
+    await axios(step1)
     var step2 = {
       method: 'post',
       url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/installs`,
@@ -93,10 +89,7 @@ export class AdaloResolver {
         'x-proton-auth': sessionToken, 
       }
     } as any;
-    console.log(step2)
-
-    const response2 = await axios(step2)
-    console.log(response2)
+    await axios(step2)
     return true
   }
   @Mutation(returns => Boolean)
@@ -105,8 +98,6 @@ export class AdaloResolver {
     @Arg("organizationId") organizationId: string,
     @Arg("sessionToken") sessionToken: string
   ) {
-    // https://proton-backend.herokuapp.com/organizations/323168/marketplace/fd843eeb-d8b3-4ba4-bc94-f65d6252ca4a
-    // https://component-registry.herokuapp.com/api/libraries/fd843eeb-d8b3-4ba4-bc94-f65d6252ca4a/installs
     var step1 = {
       method: 'delete',
       url: `https://proton-backend.herokuapp.com/organizations/${organizationId}/marketplace/${componentId}`,
@@ -115,7 +106,7 @@ export class AdaloResolver {
       }
     } as any;
     
-    const response1 = await axios(step1)
+    await axios(step1)
 
     var step2 = {
       method: 'delete',
@@ -125,7 +116,7 @@ export class AdaloResolver {
       }
     } as any;
 
-    const response2 = await axios(step2)
+    await axios(step2)
 
     return true
   }

@@ -1,0 +1,27 @@
+name: Manual build
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Bump Version
+        default: v1.0.0
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update version tag
+      run: git tag ${{ github.event.inputs.version }}
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: setup
+      run: REACT_APP_VERSION=${{ github.event.inputs.version }} yarn package:prod
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        path: |
+          server/package.json
+          server/yarn.lock
+          server/dist
