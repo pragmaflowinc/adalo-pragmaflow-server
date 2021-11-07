@@ -1,0 +1,3 @@
+query getAdaloSession($email: String!, $password: String!) {
+  getAdaloSession(email: $email, password: $password)
+}

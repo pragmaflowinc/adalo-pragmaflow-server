@@ -1,0 +1,3 @@
+mutation UninstallComponent($sessionToken: String!, $componentId: String!, $organizationId: String!) {
+  uninstallComponent(sessionToken: $sessionToken, componentId: $componentId, organizationId: $organizationId)
+}

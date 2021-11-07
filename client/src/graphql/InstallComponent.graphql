@@ -1,0 +1,3 @@
+mutation InstallComponent($sessionToken: String!, $componentId: String!, $organizationId: String!, $libraryName: String!) {
+  installComponent(sessionToken: $sessionToken, componentId: $componentId, libraryName: $libraryName, organizationId: $organizationId)
+}

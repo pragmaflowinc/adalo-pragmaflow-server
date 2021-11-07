@@ -1,0 +1,10 @@
+query getAdaloOrganizations($sessionToken: String!) {
+  getAdaloOrganizations(sessionToken: $sessionToken) {
+    id
+    name
+    Libraries {
+      id
+      name
+    }
+  }
+}
