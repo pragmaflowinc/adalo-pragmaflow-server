@@ -3,6 +3,8 @@ import { useUninstallComponentMutation, useGetAdaloSessionLazyQuery, useGetAdalo
 import { InputLabel, MenuItem, FormControl, Select, CardHeader, CardContent, Button, TextField, Box, Typography, Link, Card, CardActions } from '@mui/material'
 import LocationIcon from '@mui/icons-material/LocationOn'
 import FingerprintIcon from '@mui/icons-material/Fingerprint'
+import ContactsIcon from '@mui/icons-material/Contacts';
+
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
   name: "Geolocation",
@@ -17,6 +19,13 @@ const InstallableComponents = [{
   description: "This component allows users to login to their Adalo account using biometrics on supported devices.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-biometric-login",
   icon: <FingerprintIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "0b6ea620-0419-4eb3-baad-f13d5af5a605",
+  name: "Contact List",
+  libraryName: "phone-contacts",
+  description: "This component allows users to access their phone contact list within an Adalo app.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-phone-contacts",
+  icon: <ContactsIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
