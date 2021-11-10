@@ -4,6 +4,7 @@ import { InputLabel, MenuItem, FormControl, Select, CardHeader, CardContent, But
 import LocationIcon from '@mui/icons-material/LocationOn'
 import FingerprintIcon from '@mui/icons-material/Fingerprint'
 import ContactsIcon from '@mui/icons-material/Contacts';
+import NfcIcon from '@mui/icons-material/Nfc';
 
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
@@ -26,6 +27,13 @@ const InstallableComponents = [{
   description: "This component allows users to access their phone contact list within an Adalo app.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-phone-contacts",
   icon: <ContactsIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "944b88fc-6630-4467-8622-ff34b6ef42df",
+  name: "Nfc",
+  libraryName: "adalo-nfc",
+  description: "This component allows users to the ability to read Nfc tag ids.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-nfc",
+  icon: <NfcIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
