@@ -136,7 +136,8 @@ export function InstallComponent() {
     <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 3: Choose which components you would like to install/uninstall from your projects. Once you get a token the install/unistall buttons will appear.</Typography>
     <Box sx={{
       display: 'flex',
-      gap: 5
+      gap: 5,
+      flexWrap: 'wrap'
     }}>
       {
         InstallableComponents.map(component => (
