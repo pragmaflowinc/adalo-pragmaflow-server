@@ -5,6 +5,8 @@ import LocationIcon from '@mui/icons-material/LocationOn'
 import FingerprintIcon from '@mui/icons-material/Fingerprint'
 import ContactsIcon from '@mui/icons-material/Contacts';
 import NfcIcon from '@mui/icons-material/Nfc';
+import StorageIcon from '@mui/icons-material/Storage';
+import HttpsIcon from '@mui/icons-material/Https';
 
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
@@ -34,6 +36,20 @@ const InstallableComponents = [{
   description: "This component allows users to the ability to read Nfc tag ids.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-nfc",
   icon: <NfcIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "e5c223ff-3cd8-4e4f-b2c0-293122969997",
+  name: "Local Storage",
+  libraryName: "adalo-local-storage",
+  description: "This component allows app designers to persist data on the phone via local storage.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-local-storage",
+  icon: <StorageIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "fc702da7-88cb-40da-a9fb-0a0de2dca37e",
+  name: "Encryption Toolkit",
+  libraryName: "encryption-toolkit",
+  description: "This suite of components facilitate encypting and decrypting data being saved in the Adalo database.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-encrypted-data",
+  icon: <HttpsIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
@@ -51,11 +67,16 @@ export function InstallComponent() {
   const [password, setPassword] = useState('') 
   const [sessionToken, setSessionToken] = useState('')
   const [organization, setOrganization] = useState<OrgType>({ id: 0, name:'', Libraries: [] })
-  const [getAdaloSession, { data, loading: loadingSession }] = useGetAdaloSessionLazyQuery()
+  const [getAdaloSession, { data, loading: loadingSession, error }] = useGetAdaloSessionLazyQuery()
   const [getOrganizationInformation, { data: orgData}] = useGetAdaloOrganizationsLazyQuery()
   const [installComponent, { data: installData }] = useInstallComponentMutation({ refetchQueries: [{ query: GetAdaloOrganizationsDocument, variables: { sessionToken }}]})
   const [uninstallComponent, { data: uninstallData }] = useUninstallComponentMutation({ refetchQueries: [{ query: GetAdaloOrganizationsDocument, variables: { sessionToken }}]})
-  
+  const [loginError, setLoginError] = useState('')
+  useEffect(() => {
+    if (error) {
+      setLoginError('There was a problem logging in, please check your username and password and try again')
+    }
+  }, [error])
   useEffect(() => {
     if (orgData) {
       const updatedOrg = orgData.getAdaloOrganizations.find(org => org.id === organization.id)
@@ -107,6 +128,7 @@ export function InstallComponent() {
           })
         }} variant="contained">Get token</Button>
     </Box>
+    { loginError && <Typography color="error">{loginError}</Typography> }
     <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 2: Select which organization you want to install the components for (in case you belong to many organizations.</Typography>
     <Box sx={{ marginTop: 1, marginBottom: 1}}>
     <FormControl fullWidth>
