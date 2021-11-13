@@ -7,6 +7,7 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import NfcIcon from '@mui/icons-material/Nfc';
 import StorageIcon from '@mui/icons-material/Storage';
 import HttpsIcon from '@mui/icons-material/Https';
+import CachedIcon from '@mui/icons-material/Cached';
 
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
@@ -50,6 +51,13 @@ const InstallableComponents = [{
   description: "This suite of components facilitate encypting and decrypting data being saved in the Adalo database.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-encrypted-data",
   icon: <HttpsIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "a1fc6e0c-2b0d-40eb-974c-eae61a005aff",
+  name: "Data Loader",
+  libraryName: "adalo-data-preloader",
+  description: "This is a utility that will allow you to preload the data for your screens.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-data-preloader",
+  icon: <CachedIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
