@@ -197,7 +197,7 @@ export function InstallComponent() {
                     installComponent({
                       variables: {
                         componentId: component.id,
-                        libraryName:component.name,
+                        libraryName:component.libraryName,
                         organizationId: `${organization.id}`,
                         sessionToken
                       }
