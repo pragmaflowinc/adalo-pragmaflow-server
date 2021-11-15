@@ -19,7 +19,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { PatreonButton } from "./components/PatreonButton";
 import logo from "./assets/logo_no_text_white.png";
 import { Router } from "./Router";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import HomeIcon from '@mui/icons-material/Home'
@@ -63,6 +63,7 @@ const MenuItems = [
 const drawerWidth = 240;
 
 function App() {
+  
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
@@ -77,6 +78,9 @@ function App() {
               edge="start"
               color="inherit"
               aria-label="menu"
+              onClick={() => {
+                window.location.href = 'https://www.pragmaflow.com'
+              }}
               sx={{ mr: 2 }}
             >
               <img

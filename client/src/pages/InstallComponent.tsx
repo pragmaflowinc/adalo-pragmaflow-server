@@ -34,7 +34,7 @@ const InstallableComponents = [{
   id: "944b88fc-6630-4467-8622-ff34b6ef42df",
   name: "Nfc",
   libraryName: "adalo-nfc",
-  description: "This component allows users to the ability to read Nfc tag ids.",
+  description: "This component allows users to have the ability to read Nfc tag ids.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-nfc",
   icon: <NfcIcon sx={{ fontSize: 196}}  color="primary" />
 },{
