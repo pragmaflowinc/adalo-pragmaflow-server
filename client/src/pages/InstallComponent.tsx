@@ -45,16 +45,16 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-local-storage",
   icon: <StorageIcon sx={{ fontSize: 196}}  color="primary" />
 },{
-  id: "fc702da7-88cb-40da-a9fb-0a0de2dca37e",
+  id: "fb55da5a-76a5-435b-bde8-a4f6a673e4ab",
   name: "Encryption Toolkit",
-  libraryName: "encryption-toolkit",
+  libraryName: "pf-encryption-toolkit",
   description: "This suite of components facilitate encypting and decrypting data being saved in the Adalo database.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-encrypted-data",
   icon: <HttpsIcon sx={{ fontSize: 196}}  color="primary" />
 },{
-  id: "a1fc6e0c-2b0d-40eb-974c-eae61a005aff",
+  id: "5c55a27d-d88d-45c8-b321-0b263637134f",
   name: "Data Loader",
-  libraryName: "adalo-data-preloader",
+  libraryName: "pf-adalo-data-preloader",
   description: "This is a utility that will allow you to preload the data for your screens.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-data-preloader",
   icon: <CachedIcon sx={{ fontSize: 196}}  color="primary" />
