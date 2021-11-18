@@ -38,7 +38,6 @@ export class AdaloResolver {
       data: data,
     } as any;
     const response = await axios(config)
-    console.log(JSON.stringify(response.data));
     const { success, sessionToken } = response.data;
     if (success) {
       return sessionToken;
@@ -59,7 +58,6 @@ export class AdaloResolver {
     } as any;
     
     const response = await axios(config)
-    console.log(JSON.stringify(response.data))
     return response.data
   }
 
