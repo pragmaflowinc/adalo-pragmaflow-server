@@ -8,6 +8,9 @@ import NfcIcon from '@mui/icons-material/Nfc';
 import StorageIcon from '@mui/icons-material/Storage';
 import HttpsIcon from '@mui/icons-material/Https';
 import CachedIcon from '@mui/icons-material/Cached';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import TimerIcon from '@mui/icons-material/Timer';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
@@ -58,6 +61,27 @@ const InstallableComponents = [{
   description: "This is a utility that will allow you to preload the data for your screens.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-data-preloader",
   icon: <CachedIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "9bce3f23-9a32-4f70-b7db-698fbd0085c8",
+  name: "Ably WebSocket",
+  libraryName: "adalo-ably",
+  description: "This allows you to create websocket connections between apps for real-time data sharing.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-ably-sockets",
+  icon: <CompareArrowsIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "7d081ba1-7c10-4ac1-87de-9b0b8b2414dc",
+  name: "Timer Action",
+  libraryName: "adalo-timer-action",
+  description: "This allows you to create repeating actions using a timer.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-timer-action",
+  icon: <TimerIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "3d55348d-92ef-4eeb-b6ee-c469b567e257",
+  name: "Driving Directions",
+  libraryName: "driving-direction",
+  description: "This is a map that lets you build driving directions between two destinations.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-driving-direction",
+  icon: <DirectionsIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
