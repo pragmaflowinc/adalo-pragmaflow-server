@@ -131,6 +131,8 @@ export function InstallComponent() {
   return (
     <div>
       <Typography variant="h1">Install a component</Typography>
+      <Typography variant="h2">If you can take a second</Typography>
+      <Typography>If you can take a second to click this link <Link href="https://www.adalo.com/?via=pragmaflow">https://www.adalo.com/?via=pragmaflow</Link> we would really appreciate it. It just let's Adalo know that you all care about the work we are doing!</Typography>
       <Typography>Here you will be able to install components into your organization that are developed by PragmaFlow.</Typography>
       <Typography>To get started please enter your Adalo login credentials so the system can get a session token and install the components on your behalf.</Typography>
       <Typography>We do not log or store your credentials in any way, this site is on GitHub <Link href="https://github.com/pragmaflowinc/adalo-pragmaflow-server">here</Link> if you want to see.</Typography>
