@@ -12,6 +12,10 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import TimerIcon from '@mui/icons-material/Timer';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import LinkIcon from '@mui/icons-material/Link';
+import MailchimpSubscribe from "react-mailchimp-subscribe" 
+ 
+const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
+
 
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
@@ -144,7 +148,9 @@ export function InstallComponent() {
       <Typography>Here you will be able to install components into your organization that are developed by PragmaFlow.</Typography>
       <Typography>To get started please enter your Adalo login credentials so the system can get a session token and install the components on your behalf.</Typography>
       <Typography>We do not log or store your credentials in any way, this site is on GitHub <Link href="https://github.com/pragmaflowinc/adalo-pragmaflow-server">here</Link> if you want to see.</Typography>
-      
+      <Typography>If you want to stay up to date with changes and additions to this site, leave us your email. This is a mailchimp form so you need to go through the mailchimp process.</Typography>
+      <MailchimpSubscribe url={url} />
+
       <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 1: Get a session token to authorize the application to install components</Typography>
       <Box
         sx={{
