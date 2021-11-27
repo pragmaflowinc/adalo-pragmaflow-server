@@ -11,6 +11,7 @@ import CachedIcon from '@mui/icons-material/Cached';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import TimerIcon from '@mui/icons-material/Timer';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import LinkIcon from '@mui/icons-material/Link';
 
 const InstallableComponents = [{
   id: "c350cf63-8142-49a3-b578-3fa2159cafe7",
@@ -82,6 +83,13 @@ const InstallableComponents = [{
   description: "This is a map that lets you build driving directions between two destinations.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-driving-direction",
   icon: <DirectionsIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "fa9c7d1e-34e2-4549-873c-92f124dffe76",
+  name: "Deeper Links",
+  libraryName: "adalo-deep-links",
+  description: "This will allow you to add deep links into your native apps (not PWA).",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-deepish-linking",
+  icon: <LinkIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
