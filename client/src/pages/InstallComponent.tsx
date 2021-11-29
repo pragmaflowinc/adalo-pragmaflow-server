@@ -13,7 +13,9 @@ import TimerIcon from '@mui/icons-material/Timer';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import LinkIcon from '@mui/icons-material/Link';
 import MailchimpSubscribe from "react-mailchimp-subscribe" 
- 
+import TranslateIcon from '@mui/icons-material/Translate';
+import LanguageIcon from '@mui/icons-material/Language';
+
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
 
@@ -94,6 +96,20 @@ const InstallableComponents = [{
   description: "This will allow you to add deep links into your native apps (not PWA).",
   githubUrl: "https://github.com/pragmaflowinc/adalo-deepish-linking",
   icon: <LinkIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "2d34d4cc-54d0-47a1-b87e-e90ff3ac838d",
+  name: "Localization",
+  libraryName: "adalo-localize",
+  description: "This reads the localization information (language preference, country, on metric system, etc..) of the user. It works really well in Native, it works okay in web.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-deepish-linking",
+  icon: <LanguageIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "9ecd7d3a-1ad0-4506-b63e-622ab24eafbd",
+  name: "Multi-language Translator",
+  libraryName: "adalo-multilanguage",
+  description: "Allows the auto-magic updating of all logged in user words in your app.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-deepish-linking",
+  icon: <TranslateIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
