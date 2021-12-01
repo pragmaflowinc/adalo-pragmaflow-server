@@ -24,6 +24,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import HomeIcon from '@mui/icons-material/Home'
 import GetAppIcon from '@mui/icons-material/GetApp'
+import TranslateIcon from '@mui/icons-material/Translate';
 
 const ResourceMenuItems = [
   {
@@ -43,6 +44,11 @@ const ToolsMenuItems = [
     title: "Install a Component",
     url: "install-component",
     icon: <GetAppIcon style={{ fontSize: 32}} />,
+  },
+  {
+    title: "Translation Helper",
+    url: "translation-helper",
+    icon: <TranslateIcon style={{ fontSize: 32}} />,
   },
 ];
 

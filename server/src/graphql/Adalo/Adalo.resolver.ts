@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import {
   Arg,
@@ -10,11 +9,12 @@ import {
   Authorized,
   Mutation,
   UnauthorizedError,
-  Int
+  Int,
 } from "type-graphql";
 import { ApolloError } from "apollo-server";
 import { Service } from "typedi";
-import AdaloOrganizationSchema from './AdaloOrganization.schema'
+import AdaloOrganizationSchema from "./AdaloOrganization.schema";
+import AppsSchema from "./AdaloApp.schema";
 
 @Service()
 @Resolver()
@@ -27,7 +27,7 @@ export class AdaloResolver {
     var data = JSON.stringify({
       email,
       password,
-    }); 
+    });
 
     var config = {
       method: "post",
@@ -37,32 +37,29 @@ export class AdaloResolver {
       },
       data: data,
     } as any;
-    const response = await axios(config)
+    const response = await axios(config);
     const { success, sessionToken } = response.data;
     if (success) {
       return sessionToken;
     }
     throw new ApolloError(`Unsuccessful login attempt`);
   }
-  
+
   @Query((returns) => [AdaloOrganizationSchema])
-  async getAdaloOrganizations(
-    @Arg("sessionToken") sessionToken: string,
-  ) {
+  async getAdaloOrganizations(@Arg("sessionToken") sessionToken: string) {
     var config = {
-      method: 'get',
-      url: 'https://proton-backend.herokuapp.com/organizations',
-      headers: { 
-        'x-proton-auth': sessionToken, 
-      }
+      method: "get",
+      url: "https://proton-backend.herokuapp.com/organizations",
+      headers: {
+        "x-proton-auth": sessionToken,
+      },
     } as any;
-    
-    const response = await axios(config)
-    return response.data
+
+    const response = await axios(config);
+    return response.data;
   }
 
-
-  @Mutation(returns => Boolean)
+  @Mutation((returns) => Boolean)
   async installComponent(
     @Arg("componentId") componentId: string,
     @Arg("libraryName") libraryName: string,
@@ -70,54 +67,92 @@ export class AdaloResolver {
     @Arg("sessionToken") sessionToken: string
   ) {
     var step1 = {
-      method: 'post',
+      method: "post",
       url: `https://proton-backend.herokuapp.com/organizations/${organizationId}/marketplace/${componentId}`,
-      headers: { 
-        'x-proton-auth': sessionToken, 
+      headers: {
+        "x-proton-auth": sessionToken,
       },
       data: {
-        libraryName
-      }
+        libraryName,
+      },
     } as any;
-    await axios(step1)
+    await axios(step1);
     var step2 = {
-      method: 'post',
+      method: "post",
       url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/installs`,
-      headers: { 
-        'x-proton-auth': sessionToken, 
-      }
+      headers: {
+        "x-proton-auth": sessionToken,
+      },
     } as any;
-    await axios(step2)
-    return true
+    await axios(step2);
+    return true;
   }
-  @Mutation(returns => Boolean)
+  @Mutation((returns) => Boolean)
   async uninstallComponent(
     @Arg("componentId") componentId: string,
     @Arg("organizationId") organizationId: string,
     @Arg("sessionToken") sessionToken: string
   ) {
     var step1 = {
-      method: 'delete',
+      method: "delete",
       url: `https://proton-backend.herokuapp.com/organizations/${organizationId}/marketplace/${componentId}`,
-      headers: { 
-        'x-proton-auth': sessionToken, 
-      }
+      headers: {
+        "x-proton-auth": sessionToken,
+      },
     } as any;
-    
-    await axios(step1)
+
+    await axios(step1);
 
     var step2 = {
-      method: 'delete',
+      method: "delete",
       url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/installs`,
-      headers: { 
-        'x-proton-auth': sessionToken, 
-      }
+      headers: {
+        "x-proton-auth": sessionToken,
+      },
     } as any;
 
-    await axios(step2)
+    await axios(step2);
 
-    return true
+    return true;
   }
 
-  
+  @Query((returns) => [AppsSchema])
+  public getAppsList(@Arg("sessionToken") sessionToken: string) {
+    return new Promise((resolve, reject) => {
+      const socket = require("socket.io-client")(
+        `https://proton-backend-ws.herokuapp.com/`,
+        {
+          transport: ["websocket", "polling"],
+          query: {
+            sessionToken,
+          },
+        }
+      );
+      socket.on("connect", () => {
+        socket.emit("requestAll");
+      });
+      socket.on("appsList", (data: any) => {
+        socket.disconnect();
+        socket.close();
+        resolve(data);
+      });
+    });
+  }
+
+  @Query((returns) => String)
+  async getBundle(@Arg("appId") appId: string) {
+    var config = {
+      method: "get",
+      url: `https://adalo.global.ssl.fastly.net/apps/${appId}`,
+      headers: {
+        "x-server-auth": "hplovecraft",
+      },
+    } as any;
+    try {
+      const response = await axios(config);
+      return JSON.stringify(response.data);
+    } catch (e) {
+      throw new ApolloError("Something went wrong");
+    }
+  }
 }

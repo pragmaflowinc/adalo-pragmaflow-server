@@ -22,6 +22,7 @@
     "sequelize": "^6.9.0",
     "sequelize-hierarchy": "^2.0.4",
     "sequelize-typescript": "^2.1.1",
+    "socket.io-client": "^2.4.0",
     "sqlite3": "^5.0.2",
     "type-graphql": "^1.1.1",
     "typedi": "^0.10.0"

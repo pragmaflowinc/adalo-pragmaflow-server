@@ -1,0 +1,9 @@
+query getAdaloApps($sessionToken: String!) {
+  getAppsList(sessionToken: $sessionToken) {
+    id
+    name  
+    createdAt
+    updatedAt
+    acessedAt
+  }
+}

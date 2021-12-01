@@ -15,6 +15,14 @@ type AdaloUserSchema {
   updatedAt: String!
 }
 
+type AppsSchema {
+  acessedAt: String!
+  createdAt: String!
+  id: String!
+  name: String!
+  updatedAt: String!
+}
+
 type InvitationSchema {
   OrganizationId: Float!
   appId: String
@@ -75,4 +83,6 @@ type OrganizationUserSchema {
 type Query {
   getAdaloOrganizations(sessionToken: String!): [OrganizationSchema!]!
   getAdaloSession(email: String!, password: String!): String!
+  getAppsList(sessionToken: String!): [AppsSchema!]!
+  getBundle(appId: String!): String!
 }

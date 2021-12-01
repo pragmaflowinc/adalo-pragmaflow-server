@@ -44,6 +44,9 @@ export const theme = createTheme ({
       default: '#58595B',
       paper: '#D1D3D4'
     },
-    divider: "#00000040"
+    divider: "#00000040",
+    info: {
+      main: "#ffffff"
+    }
   },
 })

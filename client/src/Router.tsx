@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Welcome } from './pages/Welcome';
 import { YouTube } from './pages/YouTube';
 import { GitHub } from './pages/GitHub';
+import { TranslationHelper } from './pages/TranslationHelper';
 
 export function Router() {
   return (
@@ -12,6 +13,7 @@ export function Router() {
       <Route path="/youtube" element={<YouTube />} />
       <Route path="/github" element={<GitHub />} />
       <Route path="/install-component" element={<InstallComponent />} />
+      <Route path="/translation-helper" element={<TranslationHelper />} />
     </Routes>
   )
 }

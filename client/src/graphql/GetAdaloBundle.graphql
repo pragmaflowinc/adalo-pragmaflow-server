@@ -1,0 +1,3 @@
+query getAdaloBundle($appId: String!) {
+  getBundle(appId: $appId)
+}
