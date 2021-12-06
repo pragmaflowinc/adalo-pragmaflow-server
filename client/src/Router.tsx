@@ -5,6 +5,7 @@ import { Welcome } from './pages/Welcome';
 import { YouTube } from './pages/YouTube';
 import { GitHub } from './pages/GitHub';
 import { TranslationHelper } from './pages/TranslationHelper';
+import { Unavailable } from './pages/Unavailable';
 
 export function Router() {
   return (
@@ -12,7 +13,7 @@ export function Router() {
       <Route path="/" element={<Welcome />} />
       <Route path="/youtube" element={<YouTube />} />
       <Route path="/github" element={<GitHub />} />
-      <Route path="/install-component" element={<InstallComponent />} />
+      <Route path="/install-component" element={<Unavailable />} />
       <Route path="/translation-helper" element={<TranslationHelper />} />
     </Routes>
   )
