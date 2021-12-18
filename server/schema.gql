@@ -34,53 +34,28 @@ type InvitationSchema {
   updatedAt: String!
 }
 
-type LibrarySchema {
-  OrganizationLibrary: OrganizationLibrarySchema!
-  createdAt: String!
-  id: String!
-  name: String
-  updatedAt: String!
-}
-
 type Mutation {
   installComponent(componentId: String!, libraryName: String!, organizationId: String!, sessionToken: String!): Boolean!
   uninstallComponent(componentId: String!, organizationId: String!, sessionToken: String!): Boolean!
 }
 
-type OrganizationLibrarySchema {
-  LibraryId: String!
-  OrganizationId: Float!
-  createdAt: String!
-  updatedAt: String!
-}
-
 type OrganizationSchema {
   Invitations: [InvitationSchema!]!
-  Libraries: [LibrarySchema!]!
   OrganizationUser: OrganizationUserSchema!
   Users: [AdaloUserSchema!]!
-  active: Boolean!
   createdAt: String!
   id: Float!
   name: String!
-  planType: String!
-  rewardfulToken: String
-  seenEndIntegrationTrial: Boolean!
-  stripeCustomerId: String!
-  subdomain: String!
-  trialEndDate: String
   updatedAt: String!
 }
 
 type OrganizationUserSchema {
   OrganizationId: Float!
   UserId: Float!
-  createdAt: String!
-  isAdmin: Boolean!
-  updatedAt: String!
 }
 
 type Query {
+  getAdaloOrganizationLicenses(organizationId: String!, sessionToken: String!): [String!]!
   getAdaloOrganizations(sessionToken: String!): [OrganizationSchema!]!
   getAdaloSession(email: String!, password: String!): String!
   getAppsList(sessionToken: String!): [AppsSchema!]!

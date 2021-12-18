@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useUninstallComponentMutation, useGetAdaloSessionLazyQuery, useGetAdaloOrganizationsLazyQuery, useInstallComponentMutation, GetAdaloOrganizationsDocument } from '../generated/graphql'
+import { useUninstallComponentMutation, useGetAdaloSessionLazyQuery, useGetAdaloOrganizationsLazyQuery, useInstallComponentMutation, GetAdaloOrganizationsDocument, GetAdaloOrganizationLicensesDocument, useGetAdaloOrganizationLicensesLazyQuery } from '../generated/graphql'
 import { InputLabel, MenuItem, FormControl, Select, CardHeader, CardContent, Button, TextField, Box, Typography, Link, Card, CardActions } from '@mui/material'
 import LocationIcon from '@mui/icons-material/LocationOn'
 import FingerprintIcon from '@mui/icons-material/Fingerprint'
@@ -16,6 +16,7 @@ import MailchimpSubscribe from "react-mailchimp-subscribe"
 import TranslateIcon from '@mui/icons-material/Translate';
 import LanguageIcon from '@mui/icons-material/Language';
 import ShareIcon from '@mui/icons-material/Share';
+import CreateIcon from '@mui/icons-material/Create';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -132,27 +133,32 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-social-share",
   youtubeUrl: "",
   icon: <ShareIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "e8cc86d8-00e3-424b-90ff-f9ad4507f1b2",
+  name: "Signature Canvas",
+  libraryName: "signature-phone-fix",
+  description: "Allows signing a document before submitting.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-signature",
+  youtubeUrl: "",
+  icon: <CreateIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
    __typename?: "OrganizationSchema" | undefined; 
    id: number; 
    name: string; 
-   Libraries: Array<{ 
-     __typename?: "LibrarySchema" | undefined; 
-     id: string; name?: string | null | undefined; 
-  }>
 }
 
 export function InstallComponent() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('') 
   const [sessionToken, setSessionToken] = useState('')
-  const [organization, setOrganization] = useState<OrgType>({ id: 0, name:'', Libraries: [] })
+  const [organization, setOrganization] = useState<OrgType>({ id: 0, name:'' })
   const [getAdaloSession, { data, loading: loadingSession, error }] = useGetAdaloSessionLazyQuery()
   const [getOrganizationInformation, { data: orgData}] = useGetAdaloOrganizationsLazyQuery()
-  const [installComponent, { data: installData }] = useInstallComponentMutation({ refetchQueries: [{ query: GetAdaloOrganizationsDocument, variables: { sessionToken }}]})
-  const [uninstallComponent, { data: uninstallData }] = useUninstallComponentMutation({ refetchQueries: [{ query: GetAdaloOrganizationsDocument, variables: { sessionToken }}]})
+  const [installComponent, { data: installData }] = useInstallComponentMutation({ refetchQueries: [{ query: GetAdaloOrganizationLicensesDocument, variables: { sessionToken, organizationId: `${organization.id}` }}]})
+  const [uninstallComponent, { data: uninstallData }] = useUninstallComponentMutation({ refetchQueries: [{ query: GetAdaloOrganizationLicensesDocument, variables: { sessionToken, organizationId: `${organization.id}` }}]})
+  const [getLicenses, { data: licenseData }] = useGetAdaloOrganizationLicensesLazyQuery()
   const [loginError, setLoginError] = useState('')
   useEffect(() => {
     if (error) {
@@ -178,6 +184,17 @@ export function InstallComponent() {
       })
     }
   }, [data, getOrganizationInformation])
+
+  useEffect(() => {
+    if (data && organization) {
+      getLicenses({
+        variables: {
+          organizationId: `${organization.id}`,
+          sessionToken: data.getAdaloSession
+        }
+      })
+    }
+  }, [organization, data, getLicenses])
   return (
     <div>
       <Typography variant="h1">Install a component</Typography>
@@ -258,8 +275,8 @@ export function InstallComponent() {
             </CardContent>
             { sessionToken && <CardActions>
               {
-                organization.Libraries.some(lib => lib.id === component.id) ? (
-                  <Button color="error" onClick={e => {
+                licenseData && licenseData.getAdaloOrganizationLicenses.some(lib => lib === component.id) ? (
+                  <Button color="error" disabled onClick={e => {
                     uninstallComponent({
                       variables: {
                         componentId: component.id,

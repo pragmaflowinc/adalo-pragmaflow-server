@@ -48,15 +48,6 @@ export type InvitationSchema = {
   updatedAt: Scalars['String'];
 };
 
-export type LibrarySchema = {
-  __typename?: 'LibrarySchema';
-  OrganizationLibrary: OrganizationLibrarySchema;
-  createdAt: Scalars['String'];
-  id: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-  updatedAt: Scalars['String'];
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   installComponent: Scalars['Boolean'];
@@ -78,30 +69,14 @@ export type MutationUninstallComponentArgs = {
   sessionToken: Scalars['String'];
 };
 
-export type OrganizationLibrarySchema = {
-  __typename?: 'OrganizationLibrarySchema';
-  LibraryId: Scalars['String'];
-  OrganizationId: Scalars['Float'];
-  createdAt: Scalars['String'];
-  updatedAt: Scalars['String'];
-};
-
 export type OrganizationSchema = {
   __typename?: 'OrganizationSchema';
   Invitations: Array<InvitationSchema>;
-  Libraries: Array<LibrarySchema>;
   OrganizationUser: OrganizationUserSchema;
   Users: Array<AdaloUserSchema>;
-  active: Scalars['Boolean'];
   createdAt: Scalars['String'];
   id: Scalars['Float'];
   name: Scalars['String'];
-  planType: Scalars['String'];
-  rewardfulToken?: Maybe<Scalars['String']>;
-  seenEndIntegrationTrial: Scalars['Boolean'];
-  stripeCustomerId: Scalars['String'];
-  subdomain: Scalars['String'];
-  trialEndDate?: Maybe<Scalars['String']>;
   updatedAt: Scalars['String'];
 };
 
@@ -109,17 +84,21 @@ export type OrganizationUserSchema = {
   __typename?: 'OrganizationUserSchema';
   OrganizationId: Scalars['Float'];
   UserId: Scalars['Float'];
-  createdAt: Scalars['String'];
-  isAdmin: Scalars['Boolean'];
-  updatedAt: Scalars['String'];
 };
 
 export type Query = {
   __typename?: 'Query';
+  getAdaloOrganizationLicenses: Array<Scalars['String']>;
   getAdaloOrganizations: Array<OrganizationSchema>;
   getAdaloSession: Scalars['String'];
   getAppsList: Array<AppsSchema>;
   getBundle: Scalars['String'];
+};
+
+
+export type QueryGetAdaloOrganizationLicensesArgs = {
+  organizationId: Scalars['String'];
+  sessionToken: Scalars['String'];
 };
 
 
@@ -170,7 +149,15 @@ export type GetAdaloOrganizationsQueryVariables = Exact<{
 }>;
 
 
-export type GetAdaloOrganizationsQuery = { __typename?: 'Query', getAdaloOrganizations: Array<{ __typename?: 'OrganizationSchema', id: number, name: string, Libraries: Array<{ __typename?: 'LibrarySchema', id: string, name?: string | null | undefined }> }> };
+export type GetAdaloOrganizationsQuery = { __typename?: 'Query', getAdaloOrganizations: Array<{ __typename?: 'OrganizationSchema', id: number, name: string }> };
+
+export type GetAdaloOrganizationLicensesQueryVariables = Exact<{
+  organizationId: Scalars['String'];
+  sessionToken: Scalars['String'];
+}>;
+
+
+export type  GetAdaloOrganizationLicensesQuery = { __typename?: 'Query',  getAdaloOrganizationLicenses: string[] };
 
 export type InstallComponentMutationVariables = Exact<{
   sessionToken: Scalars['String'];
@@ -303,10 +290,6 @@ export const GetAdaloOrganizationsDocument = gql`
   getAdaloOrganizations(sessionToken: $sessionToken) {
     id
     name
-    Libraries {
-      id
-      name
-    }
   }
 }
     `;
@@ -349,6 +332,40 @@ export const InstallComponentDocument = gql`
 }
     `;
 export type InstallComponentMutationFn = Apollo.MutationFunction<InstallComponentMutation, InstallComponentMutationVariables>;
+
+export const GetAdaloOrganizationLicensesDocument = gql`
+    query getAdaloOrganizationLicences($sessionToken: String!, $organizationId: String!) {
+  getAdaloOrganizationLicenses(sessionToken: $sessionToken, organizationId: $organizationId)
+}
+    `;
+
+/**
+ * __useGetAdaloOrganizationLicensesQuery__
+ *
+ * To run a query within a React component, call `useGetAdaloOrganizationLicensesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdaloOrganizationLicensesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAdaloOrganizationLicensesQuery({
+ *   variables: {
+ *      sessionToken: // value for 'sessionToken'
+ *   },
+ * });
+ */
+export function useGetAdaloOrganizationLicensesQuery(baseOptions: Apollo.QueryHookOptions<GetAdaloOrganizationLicensesQuery, GetAdaloOrganizationLicensesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAdaloOrganizationLicensesQuery, GetAdaloOrganizationLicensesQueryVariables>(GetAdaloOrganizationLicensesDocument, options);
+      }
+export function useGetAdaloOrganizationLicensesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAdaloOrganizationLicensesQuery, GetAdaloOrganizationLicensesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAdaloOrganizationLicensesQuery, GetAdaloOrganizationLicensesQueryVariables>(GetAdaloOrganizationLicensesDocument, options);
+        }
+export type GetAdaloOrganizationLicensesQueryHookResult = ReturnType<typeof useGetAdaloOrganizationLicensesQuery>;
+export type GetAdaloOrganizationLicensesLazyQueryHookResult = ReturnType<typeof useGetAdaloOrganizationLicensesLazyQuery>;
+export type GetAdaloOrganizationLicensesQueryResult = Apollo.QueryResult<GetAdaloOrganizationLicensesQuery, GetAdaloOrganizationLicensesQueryVariables>;
 
 /**
  * __useInstallComponentMutation__

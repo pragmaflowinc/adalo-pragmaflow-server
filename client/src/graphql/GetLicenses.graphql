@@ -1,0 +1,3 @@
+query getAdaloOrganizationLicenses($sessionToken: String!, organizationId: String!) {
+  getAdaloOrganizationLicenses(sessionToken: $sessionToken, organizationId: $organizationId)
+}

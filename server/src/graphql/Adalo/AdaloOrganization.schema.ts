@@ -8,7 +8,7 @@ export class OrganizationLibrarySchema  {
   @Field()
   OrganizationId!: number
   @Field()
-  LibraryId!: string
+  LibraryId?: string
   @Field()
   createdAt!: string
   @Field()
@@ -26,7 +26,7 @@ export class LibrarySchema {
   @Field()
   updatedAt!: string
   @Field(type => OrganizationLibrarySchema)
-  OrganizationLibrary!: OrganizationLibrarySchema
+  OrganizationLibrary?: OrganizationLibrarySchema
 }
 
 @ObjectType()
@@ -55,12 +55,6 @@ export class OrganizationUserSchema {
   OrganizationId!: number
   @Field()
   UserId!: number
-  @Field()
-  isAdmin!: boolean
-  @Field()
-  createdAt!: string
-  @Field()
-  updatedAt!: string
 }
 
 @ObjectType()
@@ -93,20 +87,6 @@ export default class OrganizationSchema {
   @Field()
   name!: string
   @Field()
-  planType!: string
-  @Field({ nullable: true })
-  trialEndDate?: string
-  @Field()
-  active!: boolean
-  @Field()
-  stripeCustomerId!: string
-  @Field()
-  subdomain!: string
-  @Field({ nullable: true })
-  rewardfulToken?: string
-  @Field()
-  seenEndIntegrationTrial!: boolean
-  @Field()
   createdAt!: string
   @Field()
   updatedAt!: string
@@ -114,8 +94,6 @@ export default class OrganizationSchema {
   Users!: AdaloUserSchema[]
   @Field(type => [InvitationSchema])
   Invitations!: InvitationSchema[]
-  @Field(type => [LibrarySchema])
-  Libraries!: LibrarySchema[]
   @Field(type => OrganizationUserSchema)
   OrganizationUser!: OrganizationUserSchema
 }

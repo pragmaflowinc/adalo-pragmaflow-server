@@ -56,35 +56,43 @@ export class AdaloResolver {
     } as any;
 
     const response = await axios(config);
+    console.log(response.data)
     return response.data;
   }
+ 
+  @Query((returns) => [String])
+  async getAdaloOrganizationLicenses(@Arg("sessionToken") sessionToken: string, @Arg("organizationId") organizationId: string) {
+    var config = {
+      method: "get",
+      url: `https://component-registry.herokuapp.com/api/licenses/org/${organizationId}`,
+      headers: {
+        "x-proton-auth": sessionToken,
+      },
+    } as any;
 
-  @Mutation((returns) => Boolean)
+    const response = await axios(config);
+    console.log(response.data)
+    return response.data[organizationId];
+  }
+
+  @Mutation((returns) => Boolean)                    
   async installComponent(
     @Arg("componentId") componentId: string,
     @Arg("libraryName") libraryName: string,
     @Arg("organizationId") organizationId: string,
     @Arg("sessionToken") sessionToken: string
   ) {
-    var step1 = {
-      method: "post",
-      url: `https://proton-backend.herokuapp.com/organizations/${organizationId}/marketplace/${componentId}`,
-      headers: {
-        "x-proton-auth": sessionToken,
-      },
-      data: {
-        libraryName,
-      },
-    } as any;
-    await axios(step1);
-    var step2 = {
+    var installRequest = {
       method: "post",
       url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/installs`,
       headers: {
         "x-proton-auth": sessionToken,
       },
+      data: {
+        orgId: organizationId
+      }
     } as any;
-    await axios(step2);
+    await axios(installRequest);
     return true;
   }
   @Mutation((returns) => Boolean)
@@ -93,17 +101,7 @@ export class AdaloResolver {
     @Arg("organizationId") organizationId: string,
     @Arg("sessionToken") sessionToken: string
   ) {
-    var step1 = {
-      method: "delete",
-      url: `https://proton-backend.herokuapp.com/organizations/${organizationId}/marketplace/${componentId}`,
-      headers: {
-        "x-proton-auth": sessionToken,
-      },
-    } as any;
-
-    await axios(step1);
-
-    var step2 = {
+    var uninstallRequest = {
       method: "delete",
       url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/installs`,
       headers: {
@@ -111,7 +109,7 @@ export class AdaloResolver {
       },
     } as any;
 
-    await axios(step2);
+    await axios(uninstallRequest);
 
     return true;
   }
