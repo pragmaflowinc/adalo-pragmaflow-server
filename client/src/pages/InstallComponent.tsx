@@ -17,6 +17,8 @@ import TranslateIcon from '@mui/icons-material/Translate';
 import LanguageIcon from '@mui/icons-material/Language';
 import ShareIcon from '@mui/icons-material/Share';
 import CreateIcon from '@mui/icons-material/Create';
+import CodeIcon from '@mui/icons-material/Code';
+import SecurityIcon from '@mui/icons-material/Security';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -141,6 +143,22 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-signature",
   youtubeUrl: "",
   icon: <CreateIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "ace8a817-1001-4aba-8ad3-6fa103641840",
+  name: "Arbitrary Javascript",
+  libraryName: "adalo-arbitrary-javascript",
+  description: "Sometimes you just want to add code.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-arbitrary-javascript",
+  youtubeUrl: "",
+  icon: <CodeIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "08fb9b8c-b556-40a2-90c2-8f04a9140f15",
+  name: "Native Permissions Manager",
+  libraryName: "adalo-permission-manager",
+  description: "Sometimes you just want to add code.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-permission-manager",
+  youtubeUrl: "",
+  icon: <SecurityIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
