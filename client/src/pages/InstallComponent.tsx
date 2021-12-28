@@ -19,6 +19,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import CreateIcon from '@mui/icons-material/Create';
 import CodeIcon from '@mui/icons-material/Code';
 import SecurityIcon from '@mui/icons-material/Security';
+import HttpIcon from '@mui/icons-material/Http';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -155,10 +156,18 @@ const InstallableComponents = [{
   id: "08fb9b8c-b556-40a2-90c2-8f04a9140f15",
   name: "Native Permissions Manager",
   libraryName: "adalo-permission-manager",
-  description: "Sometimes you just want to add code.",
+  description: "Allows enabling microphone and camera permissions in your native app.",
   githubUrl: "https://github.com/pragmaflowinc/adalo-permission-manager",
   youtubeUrl: "",
   icon: <SecurityIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "b72680c7-9bc1-4368-8d5f-b52e1ed26ed1",
+  name: "Better WebView",
+  libraryName: "adalo-webview",
+  description: "Enhance your WebView by using HTML instead of URLs and capturing user links to make actions.",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-webview",
+  youtubeUrl: "",
+  icon: <HttpIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
