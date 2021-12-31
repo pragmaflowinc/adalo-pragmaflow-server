@@ -183,7 +183,7 @@ const InstallableComponents = [{
   name: "Quickcharts.io",
   libraryName: "mitch-pf-library",
   description: "Charts record count using filtered list input",
-  githubUrl: "https://github.com/pragmaflowinc/adalo-iaphub",
+  githubUrl: "https://github.com/pragmaflowinc/adaol-quickcharts.io",
   youtubeUrl: "",
   icon: <BarChartIcon sx={{ fontSize: 196}}  color="primary" />
 }]
