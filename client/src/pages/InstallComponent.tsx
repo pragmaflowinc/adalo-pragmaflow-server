@@ -21,6 +21,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import SecurityIcon from '@mui/icons-material/Security';
 import HttpIcon from '@mui/icons-material/Http';
 import PaidIcon from '@mui/icons-material/Paid';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -177,6 +178,14 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-iaphub",
   youtubeUrl: "",
   icon: <PaidIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "b9125590-929a-42f7-aafe-1bb0e3d37bc4",
+  name: "Quickcharts.io",
+  libraryName: "mitch-pf-library",
+  description: "Charts record count using filtered list input",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-iaphub",
+  youtubeUrl: "",
+  icon: <BarChartIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
