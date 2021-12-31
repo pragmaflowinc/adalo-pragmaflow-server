@@ -20,6 +20,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import CodeIcon from '@mui/icons-material/Code';
 import SecurityIcon from '@mui/icons-material/Security';
 import HttpIcon from '@mui/icons-material/Http';
+import PaidIcon from '@mui/icons-material/Paid';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -168,6 +169,14 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-webview",
   youtubeUrl: "",
   icon: <HttpIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "6b4f5517-9fd0-4868-a1cd-6e8691339eeb",
+  name: "IAPHUB",
+  libraryName: "adalo-iaphub",
+  description: "IAP with Subscriptions using IAPHUB.com",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-iaphub",
+  youtubeUrl: "",
+  icon: <PaidIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
