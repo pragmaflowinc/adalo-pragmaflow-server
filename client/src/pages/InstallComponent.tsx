@@ -22,6 +22,7 @@ import SecurityIcon from '@mui/icons-material/Security';
 import HttpIcon from '@mui/icons-material/Http';
 import PaidIcon from '@mui/icons-material/Paid';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import MicIcon from '@mui/icons-material/Mic';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -182,10 +183,18 @@ const InstallableComponents = [{
   id: "b9125590-929a-42f7-aafe-1bb0e3d37bc4",
   name: "Quickcharts.io",
   libraryName: "mitch-pf-library",
-  description: "Charts record count using filtered list input",
+  description: "Charts record count using filtered list input and grouped by the filter of your choice",
   githubUrl: "https://github.com/pragmaflowinc/adaol-quickcharts.io",
   youtubeUrl: "",
   icon: <BarChartIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "2a2619fa-442a-4c16-bcd4-454e91d7bfa0",
+  name: "Audio Recorder (Web only for now)",
+  libraryName: "audio-recorder-and-player",
+  description: "Record microphone input",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-audio-recorder",
+  youtubeUrl: "",
+  icon: <MicIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
