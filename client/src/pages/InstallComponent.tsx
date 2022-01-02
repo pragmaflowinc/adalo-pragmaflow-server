@@ -189,13 +189,21 @@ const InstallableComponents = [{
   youtubeUrl: "",
   icon: <BarChartIcon sx={{ fontSize: 196}}  color="primary" />
 },{
+  id: "2a2619fa-442a-4c16-bcd4-454e91d7bfa0",
+  name: "Audio Recorder (Web only for now)",
+  libraryName: "audio-recorder-and-player",
+  description: "Record microphone input",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-audio-recorder",
+  youtubeUrl: "",
+  icon: <MicIcon sx={{ fontSize: 196}}  color="primary" />
+},{
   id: "e62e0cd9-65e8-43a8-b17a-4bf40be5307a",
   name: "Pinch/Pan/Zoom Image",
   libraryName: "adalo-pinch-pan-zoom",
   description: "Allows Zooming and Panning on an image (touchscreen only for zoom)",
   githubUrl: "https://github.com/pragmaflowinc/adalo-pinch-pan-zoom",
   youtubeUrl: "",
-  icon: <MicIcon sx={{ fontSize: 196}}  color="primary" />
+  icon: <ZoomOutMapIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
