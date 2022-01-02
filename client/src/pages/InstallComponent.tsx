@@ -23,6 +23,7 @@ import HttpIcon from '@mui/icons-material/Http';
 import PaidIcon from '@mui/icons-material/Paid';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import MicIcon from '@mui/icons-material/Mic';
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -188,11 +189,11 @@ const InstallableComponents = [{
   youtubeUrl: "",
   icon: <BarChartIcon sx={{ fontSize: 196}}  color="primary" />
 },{
-  id: "2a2619fa-442a-4c16-bcd4-454e91d7bfa0",
-  name: "Audio Recorder (Web only for now)",
-  libraryName: "audio-recorder-and-player",
-  description: "Record microphone input",
-  githubUrl: "https://github.com/pragmaflowinc/adalo-audio-recorder",
+  id: "e62e0cd9-65e8-43a8-b17a-4bf40be5307a",
+  name: "Pinch/Pan/Zoom Image",
+  libraryName: "adalo-pinch-pan-zoom",
+  description: "Allows Zooming and Panning on an image (touchscreen only for zoom)",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-pinch-pan-zoom",
   youtubeUrl: "",
   icon: <MicIcon sx={{ fontSize: 196}}  color="primary" />
 }]
