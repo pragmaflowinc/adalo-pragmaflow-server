@@ -24,6 +24,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import MicIcon from '@mui/icons-material/Mic';
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -204,6 +205,14 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-pinch-pan-zoom",
   youtubeUrl: "",
   icon: <ZoomOutMapIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "db9a158a-35de-48a4-96e8-34c8f3a6a44c",
+  name: "QR Scanner",
+  libraryName: "pf-qr-code-scanner",
+  description: "A fixed version of the QR scanner from the Marketplace",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-qr-scanner",
+  youtubeUrl: "",
+  icon: <QrCodeScannerIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
