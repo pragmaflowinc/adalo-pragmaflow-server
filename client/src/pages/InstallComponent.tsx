@@ -25,6 +25,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import MicIcon from '@mui/icons-material/Mic';
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
+import ChatIcon from '@mui/icons-material/Chat';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -213,6 +214,14 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-qr-scanner",
   youtubeUrl: "",
   icon: <QrCodeScannerIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "13e7e9c3-1833-429f-9516-98f3f2e1bbfa",
+  name: "Real-Time Chat",
+  libraryName: "adalo-real-time-chat",
+  description: "Real-Time chat component for Adalo",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-qr-scanner",
+  youtubeUrl: "",
+  icon: <ChatIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
