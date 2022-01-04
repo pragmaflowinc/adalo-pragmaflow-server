@@ -219,7 +219,7 @@ const InstallableComponents = [{
   name: "Real-Time Chat",
   libraryName: "adalo-real-time-chat",
   description: "Real-Time chat component for Adalo",
-  githubUrl: "https://github.com/pragmaflowinc/adalo-qr-scanner",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-realtime-chat",
   youtubeUrl: "",
   icon: <ChatIcon sx={{ fontSize: 196}}  color="primary" />
 }]
