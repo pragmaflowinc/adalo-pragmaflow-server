@@ -26,6 +26,7 @@ import MicIcon from '@mui/icons-material/Mic';
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import ChatIcon from '@mui/icons-material/Chat';
+import UploadIcon from '@mui/icons-material/Upload';
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -222,6 +223,14 @@ const InstallableComponents = [{
   githubUrl: "https://github.com/pragmaflowinc/adalo-realtime-chat",
   youtubeUrl: "",
   icon: <ChatIcon sx={{ fontSize: 196}}  color="primary" />
+},{
+  id: "67901f6f-7482-4fe8-bf5b-296f7cebf8d5",
+  name: "Spreadsheet Importer (Web only for now)",
+  libraryName: "adalo-cvs-import",
+  description: "Allow your users to upload spreadsheets into your collection",
+  githubUrl: "https://github.com/pragmaflowinc/adalo-cvs-importer",
+  youtubeUrl: "",
+  icon: <UploadIcon sx={{ fontSize: 196}}  color="primary" />
 }]
 
 interface OrgType {
