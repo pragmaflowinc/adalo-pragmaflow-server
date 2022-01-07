@@ -13,7 +13,7 @@ export function Router() {
       <Route path="/" element={<Welcome />} />
       <Route path="/youtube" element={<YouTube />} />
       <Route path="/github" element={<GitHub />} />
-      <Route path="/install-component" element={<InstallComponent />} />
+      <Route path="/install-component" element={<Unavailable />} />
       <Route path="/translation-helper" element={<TranslationHelper />} />
     </Routes>
   )
