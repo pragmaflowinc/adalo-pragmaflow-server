@@ -28,21 +28,21 @@ export const theme = createTheme ({
   },
   palette: {
     primary: {
-      main: '#263e85',
+      main: '#18212D',
     }, 
     secondary: {
       main: '#50b6e8',
     },
     text: {
-      primary: "#D1D3D4",
+      primary: "#18212D",
       secondary: "#000000"
     },
     error: {
       main: '#CE0E2D'
     },
     background: {
-      default: '#58595B',
-      paper: '#D1D3D4'
+      default: '#EAEEF0',
+      paper: 'white'
     },
     divider: "#00000040",
     info: {

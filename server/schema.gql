@@ -35,7 +35,7 @@ type InvitationSchema {
 }
 
 type Mutation {
-  installComponent(componentId: String!, libraryName: String!, organizationId: String!, sessionToken: String!): Boolean!
+  installComponent(accessToken: String!, componentId: String!): Boolean!
   uninstallComponent(componentId: String!, organizationId: String!, sessionToken: String!): Boolean!
 }
 

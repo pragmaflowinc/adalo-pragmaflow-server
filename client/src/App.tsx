@@ -14,6 +14,7 @@ import {
   ThemeProvider,
   Toolbar,
   Typography,
+  ListItemButton,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { PatreonButton } from "./components/PatreonButton";
@@ -35,6 +36,11 @@ const ResourceMenuItems = [
   {
     title: "GitHub Repositories",
     url: "/github",
+    icon: <GitHubIcon style={{ fontSize: 32}} />,
+  },
+  {
+    title: "Componnet Docs",
+    url: "/component-docs",
     icon: <GitHubIcon style={{ fontSize: 32}} />,
   },
 ];
@@ -76,7 +82,7 @@ function App() {
         <CssBaseline />
         <AppBar
           position="fixed"
-          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'rgb(63,156,229)' }}
         >
           <Toolbar>
             <IconButton
@@ -108,8 +114,10 @@ function App() {
             width: drawerWidth,
             flexShrink: 0,
             [`& .MuiDrawer-paper`]: {
+              backgroundColor: "#18212D",
               width: drawerWidth,
               boxSizing: "border-box",
+              color: "#BBBCC1"
             },
           }}
         >
@@ -119,15 +127,16 @@ function App() {
               {MenuItems.map((menuItem, i) => (
                 <React.Fragment key={i}>
                   {menuItem.items.map((item) => (
-                    <Link key={item.title} to={item.url}>
-                    <ListItem
+                    <Link key={item.title} to={item.url} style={{textDecoration:'none'}}>
+                    <ListItemButton
+                      
                       sx={{
-                        color: "text.secondary",
+                        color: "#BBBCC1",
                       }}
                     >
-                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemIcon sx={{ color: "#BBBCC1"}}>{item.icon}</ListItemIcon>
                       <ListItemText primary={item.title} />
-                    </ListItem>
+                    </ListItemButton>
                     </Link>
                   ))}
                   <Divider />

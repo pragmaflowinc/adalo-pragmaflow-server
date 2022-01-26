@@ -1,3 +1,3 @@
-mutation InstallComponent($sessionToken: String!, $componentId: String!, $organizationId: String!, $libraryName: String!) {
-  installComponent(sessionToken: $sessionToken, componentId: $componentId, libraryName: $libraryName, organizationId: $organizationId)
+mutation InstallComponent($accessToken: String!, $componentId: String!) {
+  installComponent(accessToken: $accessToken, componentId: $componentId)
 }

@@ -19,6 +19,7 @@ import AppsSchema from "./AdaloApp.schema";
 @Service()
 @Resolver()
 export class AdaloResolver {
+  
   @Query((returns) => String)
   async getAdaloSession(
     @Arg("email") email: string,
@@ -76,18 +77,16 @@ export class AdaloResolver {
   @Mutation((returns) => Boolean)                    
   async installComponent(
     @Arg("componentId") componentId: string,
-    @Arg("libraryName") libraryName: string,
-    @Arg("organizationId") organizationId: string,
-    @Arg("sessionToken") sessionToken: string
+    @Arg("accessToken") accessToken: string
   ) {
     var installRequest = {
       method: "post",
-      url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/installs`,
+      url: `https://component-registry.herokuapp.com/api/libraries/${componentId}/share`,
       headers: {
-        "x-proton-auth": sessionToken,
+        "x-proton-auth": process.env.authToken,
       },
       data: {
-        orgId: organizationId
+        accessToken
       }
     } as any;
     await axios(installRequest);
