@@ -14,6 +14,12 @@ export const theme = createTheme ({
     h2: {
       fontFamily: "Noto Serif",
       fontSize: "2em",
+      marginBottom: 12,
+      marginTop: 6
+    },
+    h3: {
+      fontFamily: "Noto Serif",
+      fontSize: "1.5em",
       marginBottom: 12
     },
     h4: {

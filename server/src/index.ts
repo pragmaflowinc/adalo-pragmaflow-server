@@ -5,11 +5,42 @@ import { AdaloResolver } from "./graphql/Adalo/Adalo.resolver";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import path from "path";
+import { createConnections } from "typeorm";
+import { DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_URL, DATABASE_NAME } from "./utils/config";
+import { Component } from "./entity/Component";
+import { ComponentResolver } from "./graphql/Components/Component.resolver";
+import { VimeoVideo } from "./entity/VimeoVideo";
+import { ToDoList } from "./entity/ToDoList";
+import { HowToVideoResolver } from "./graphql/HowToVideos/HowToVideo.resolver";
+import { CurrentWorkResolver } from "./graphql/CurrentWork/CurrentWork.resolver";
+import { Feedback } from "./entity/Feedback";
+import { FeedbackResolver } from "./graphql/Feedback/Feedback.resolver";
 
 (async () => {
+  await createConnections([
+    {
+      name: "default",
+      type: "postgres",
+      url: `postgres://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_URL}/${DATABASE_NAME}`,
+      logging: true,
+      synchronize:false,
+      migrationsRun: true,
+      migrations: [path.join(__dirname, "./migration/*")],
+      entities: [
+        Component,
+        VimeoVideo,
+        ToDoList,
+        Feedback
+      ]
+    }
+  ])
   const schema = await buildSchema({
     resolvers: [
-      AdaloResolver
+      AdaloResolver,
+      ComponentResolver,
+      HowToVideoResolver,
+      CurrentWorkResolver,
+      FeedbackResolver
     ],
     emitSchemaFile: true,
     container: Container,

@@ -23,6 +23,17 @@ type AppsSchema {
   updatedAt: String!
 }
 
+type Component {
+  componentId: String!
+  description: String!
+  githubUrl: String!
+  icon: String!
+  id: Float!
+  libraryName: String!
+  name: String!
+  youtubeUrl: String!
+}
+
 type InvitationSchema {
   OrganizationId: Float!
   appId: String
@@ -36,6 +47,7 @@ type InvitationSchema {
 
 type Mutation {
   installComponent(accessToken: String!, componentId: String!): Boolean!
+  submitFeedback(content: String!, email: String, subject: String): Boolean!
   uninstallComponent(componentId: String!, organizationId: String!, sessionToken: String!): Boolean!
 }
 
@@ -60,4 +72,21 @@ type Query {
   getAdaloSession(email: String!, password: String!): String!
   getAppsList(sessionToken: String!): [AppsSchema!]!
   getBundle(appId: String!): String!
+  getComponents: [Component!]!
+  getHowToVimeoVideos: [VimeoVideo!]!
+  getToDoList: [ToDoList!]!
+}
+
+type ToDoList {
+  description: String!
+  id: Float!
+  status: String!
+  title: String!
+}
+
+type VimeoVideo {
+  description: String!
+  id: Float!
+  title: String!
+  videoUrl: String!
 }

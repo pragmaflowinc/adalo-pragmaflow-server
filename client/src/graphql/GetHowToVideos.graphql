@@ -1,0 +1,8 @@
+query GetHowToVimeoVideos {
+	getHowToVimeoVideos {
+    id
+    title
+    description
+    videoUrl
+	}
+}

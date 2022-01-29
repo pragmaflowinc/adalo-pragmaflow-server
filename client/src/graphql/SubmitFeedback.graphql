@@ -1,0 +1,3 @@
+mutation SubmitFeedback($email: String, $subject: String, $content: String!) {
+  submitFeedback(email: $email, subject: $subject, content: $content)
+}

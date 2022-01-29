@@ -1,5 +1,4 @@
-import React from 'react'
-import { InputLabel, MenuItem, FormControl, Select, CardHeader, CardContent, Button, TextField, Box, Typography, Link, Card, CardActions } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 export function BestPractices() {
   return (

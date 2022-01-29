@@ -1,0 +1,8 @@
+query GetToDoList {
+  getToDoList {
+    id
+    title
+    description
+    status
+  }
+}

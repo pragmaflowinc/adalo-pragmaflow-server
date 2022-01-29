@@ -1,0 +1,11 @@
+query GetComponents {
+	getComponents {
+  	componentId
+    name
+    libraryName
+    description
+    githubUrl
+    youtubeUrl
+    icon
+	}
+}

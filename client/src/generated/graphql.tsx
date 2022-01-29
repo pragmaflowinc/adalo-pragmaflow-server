@@ -36,6 +36,18 @@ export type AppsSchema = {
   updatedAt: Scalars['String'];
 };
 
+export type Component = {
+  __typename?: 'Component';
+  componentId: Scalars['String'];
+  description: Scalars['String'];
+  githubUrl: Scalars['String'];
+  icon: Scalars['String'];
+  id: Scalars['Float'];
+  libraryName: Scalars['String'];
+  name: Scalars['String'];
+  youtubeUrl: Scalars['String'];
+};
+
 export type InvitationSchema = {
   __typename?: 'InvitationSchema';
   OrganizationId: Scalars['Float'];
@@ -51,6 +63,7 @@ export type InvitationSchema = {
 export type Mutation = {
   __typename?: 'Mutation';
   installComponent: Scalars['Boolean'];
+  submitFeedback: Scalars['Boolean'];
   uninstallComponent: Scalars['Boolean'];
 };
 
@@ -58,6 +71,13 @@ export type Mutation = {
 export type MutationInstallComponentArgs = {
   accessToken: Scalars['String'];
   componentId: Scalars['String'];
+};
+
+
+export type MutationSubmitFeedbackArgs = {
+  content: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
+  subject?: Maybe<Scalars['String']>;
 };
 
 
@@ -91,6 +111,9 @@ export type Query = {
   getAdaloSession: Scalars['String'];
   getAppsList: Array<AppsSchema>;
   getBundle: Scalars['String'];
+  getComponents: Array<Component>;
+  getHowToVimeoVideos: Array<VimeoVideo>;
+  getToDoList: Array<ToDoList>;
 };
 
 
@@ -120,6 +143,22 @@ export type QueryGetBundleArgs = {
   appId: Scalars['String'];
 };
 
+export type ToDoList = {
+  __typename?: 'ToDoList';
+  description: Scalars['String'];
+  id: Scalars['Float'];
+  status: Scalars['String'];
+  title: Scalars['String'];
+};
+
+export type VimeoVideo = {
+  __typename?: 'VimeoVideo';
+  description: Scalars['String'];
+  id: Scalars['Float'];
+  title: Scalars['String'];
+  videoUrl: Scalars['String'];
+};
+
 export type GetAdaloAppsQueryVariables = Exact<{
   sessionToken: Scalars['String'];
 }>;
@@ -142,12 +181,27 @@ export type GetAdaloSessionQueryVariables = Exact<{
 
 export type GetAdaloSessionQuery = { __typename?: 'Query', getAdaloSession: string };
 
+export type GetComponentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetComponentsQuery = { __typename?: 'Query', getComponents: Array<{ __typename?: 'Component', componentId: string, name: string, libraryName: string, description: string, githubUrl: string, youtubeUrl: string, icon: string }> };
+
+export type GetHowToVimeoVideosQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHowToVimeoVideosQuery = { __typename?: 'Query', getHowToVimeoVideos: Array<{ __typename?: 'VimeoVideo', id: number, title: string, description: string, videoUrl: string }> };
+
 export type GetAdaloOrganizationsQueryVariables = Exact<{
   sessionToken: Scalars['String'];
 }>;
 
 
 export type GetAdaloOrganizationsQuery = { __typename?: 'Query', getAdaloOrganizations: Array<{ __typename?: 'OrganizationSchema', id: number, name: string }> };
+
+export type GetToDoListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetToDoListQuery = { __typename?: 'Query', getToDoList: Array<{ __typename?: 'ToDoList', id: number, title: string, description: string, status: string }> };
 
 export type InstallComponentMutationVariables = Exact<{
   accessToken: Scalars['String'];
@@ -156,6 +210,15 @@ export type InstallComponentMutationVariables = Exact<{
 
 
 export type InstallComponentMutation = { __typename?: 'Mutation', installComponent: boolean };
+
+export type SubmitFeedbackMutationVariables = Exact<{
+  email?: Maybe<Scalars['String']>;
+  subject?: Maybe<Scalars['String']>;
+  content: Scalars['String'];
+}>;
+
+
+export type SubmitFeedbackMutation = { __typename?: 'Mutation', submitFeedback: boolean };
 
 export type UninstallComponentMutationVariables = Exact<{
   sessionToken: Scalars['String'];
@@ -273,6 +336,83 @@ export function useGetAdaloSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
 export type GetAdaloSessionQueryHookResult = ReturnType<typeof useGetAdaloSessionQuery>;
 export type GetAdaloSessionLazyQueryHookResult = ReturnType<typeof useGetAdaloSessionLazyQuery>;
 export type GetAdaloSessionQueryResult = Apollo.QueryResult<GetAdaloSessionQuery, GetAdaloSessionQueryVariables>;
+export const GetComponentsDocument = gql`
+    query GetComponents {
+  getComponents {
+    componentId
+    name
+    libraryName
+    description
+    githubUrl
+    youtubeUrl
+    icon
+  }
+}
+    `;
+
+/**
+ * __useGetComponentsQuery__
+ *
+ * To run a query within a React component, call `useGetComponentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetComponentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetComponentsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetComponentsQuery(baseOptions?: Apollo.QueryHookOptions<GetComponentsQuery, GetComponentsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetComponentsQuery, GetComponentsQueryVariables>(GetComponentsDocument, options);
+      }
+export function useGetComponentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetComponentsQuery, GetComponentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetComponentsQuery, GetComponentsQueryVariables>(GetComponentsDocument, options);
+        }
+export type GetComponentsQueryHookResult = ReturnType<typeof useGetComponentsQuery>;
+export type GetComponentsLazyQueryHookResult = ReturnType<typeof useGetComponentsLazyQuery>;
+export type GetComponentsQueryResult = Apollo.QueryResult<GetComponentsQuery, GetComponentsQueryVariables>;
+export const GetHowToVimeoVideosDocument = gql`
+    query GetHowToVimeoVideos {
+  getHowToVimeoVideos {
+    id
+    title
+    description
+    videoUrl
+  }
+}
+    `;
+
+/**
+ * __useGetHowToVimeoVideosQuery__
+ *
+ * To run a query within a React component, call `useGetHowToVimeoVideosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHowToVimeoVideosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHowToVimeoVideosQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetHowToVimeoVideosQuery(baseOptions?: Apollo.QueryHookOptions<GetHowToVimeoVideosQuery, GetHowToVimeoVideosQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetHowToVimeoVideosQuery, GetHowToVimeoVideosQueryVariables>(GetHowToVimeoVideosDocument, options);
+      }
+export function useGetHowToVimeoVideosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHowToVimeoVideosQuery, GetHowToVimeoVideosQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetHowToVimeoVideosQuery, GetHowToVimeoVideosQueryVariables>(GetHowToVimeoVideosDocument, options);
+        }
+export type GetHowToVimeoVideosQueryHookResult = ReturnType<typeof useGetHowToVimeoVideosQuery>;
+export type GetHowToVimeoVideosLazyQueryHookResult = ReturnType<typeof useGetHowToVimeoVideosLazyQuery>;
+export type GetHowToVimeoVideosQueryResult = Apollo.QueryResult<GetHowToVimeoVideosQuery, GetHowToVimeoVideosQueryVariables>;
 export const GetAdaloOrganizationsDocument = gql`
     query getAdaloOrganizations($sessionToken: String!) {
   getAdaloOrganizations(sessionToken: $sessionToken) {
@@ -309,6 +449,43 @@ export function useGetAdaloOrganizationsLazyQuery(baseOptions?: Apollo.LazyQuery
 export type GetAdaloOrganizationsQueryHookResult = ReturnType<typeof useGetAdaloOrganizationsQuery>;
 export type GetAdaloOrganizationsLazyQueryHookResult = ReturnType<typeof useGetAdaloOrganizationsLazyQuery>;
 export type GetAdaloOrganizationsQueryResult = Apollo.QueryResult<GetAdaloOrganizationsQuery, GetAdaloOrganizationsQueryVariables>;
+export const GetToDoListDocument = gql`
+    query GetToDoList {
+  getToDoList {
+    id
+    title
+    description
+    status
+  }
+}
+    `;
+
+/**
+ * __useGetToDoListQuery__
+ *
+ * To run a query within a React component, call `useGetToDoListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetToDoListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetToDoListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetToDoListQuery(baseOptions?: Apollo.QueryHookOptions<GetToDoListQuery, GetToDoListQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetToDoListQuery, GetToDoListQueryVariables>(GetToDoListDocument, options);
+      }
+export function useGetToDoListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetToDoListQuery, GetToDoListQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetToDoListQuery, GetToDoListQueryVariables>(GetToDoListDocument, options);
+        }
+export type GetToDoListQueryHookResult = ReturnType<typeof useGetToDoListQuery>;
+export type GetToDoListLazyQueryHookResult = ReturnType<typeof useGetToDoListLazyQuery>;
+export type GetToDoListQueryResult = Apollo.QueryResult<GetToDoListQuery, GetToDoListQueryVariables>;
 export const InstallComponentDocument = gql`
     mutation InstallComponent($accessToken: String!, $componentId: String!) {
   installComponent(accessToken: $accessToken, componentId: $componentId)
@@ -341,6 +518,39 @@ export function useInstallComponentMutation(baseOptions?: Apollo.MutationHookOpt
 export type InstallComponentMutationHookResult = ReturnType<typeof useInstallComponentMutation>;
 export type InstallComponentMutationResult = Apollo.MutationResult<InstallComponentMutation>;
 export type InstallComponentMutationOptions = Apollo.BaseMutationOptions<InstallComponentMutation, InstallComponentMutationVariables>;
+export const SubmitFeedbackDocument = gql`
+    mutation SubmitFeedback($email: String, $subject: String, $content: String!) {
+  submitFeedback(email: $email, subject: $subject, content: $content)
+}
+    `;
+export type SubmitFeedbackMutationFn = Apollo.MutationFunction<SubmitFeedbackMutation, SubmitFeedbackMutationVariables>;
+
+/**
+ * __useSubmitFeedbackMutation__
+ *
+ * To run a mutation, you first call `useSubmitFeedbackMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSubmitFeedbackMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [submitFeedbackMutation, { data, loading, error }] = useSubmitFeedbackMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *      subject: // value for 'subject'
+ *      content: // value for 'content'
+ *   },
+ * }); 
+ */
+export function useSubmitFeedbackMutation(baseOptions?: Apollo.MutationHookOptions<SubmitFeedbackMutation, SubmitFeedbackMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SubmitFeedbackMutation, SubmitFeedbackMutationVariables>(SubmitFeedbackDocument, options);
+      }
+export type SubmitFeedbackMutationHookResult = ReturnType<typeof useSubmitFeedbackMutation>;
+export type SubmitFeedbackMutationResult = Apollo.MutationResult<SubmitFeedbackMutation>;
+export type SubmitFeedbackMutationOptions = Apollo.BaseMutationOptions<SubmitFeedbackMutation, SubmitFeedbackMutationVariables>;
 export const UninstallComponentDocument = gql`
     mutation UninstallComponent($sessionToken: String!, $componentId: String!, $organizationId: String!) {
   uninstallComponent(
