@@ -9,6 +9,7 @@ import mustache from 'mustache';
 import mjml from 'mjml';
 
 import { mailClient } from '../../utils/email'
+import { NOTIFICATION_EMAIL } from '../../utils/config'
 
 const templateFeedback = fs.readFileSync(path.join(__dirname, "../../email-templates/feedback-submitted.mjml"), "utf8");
 
@@ -21,9 +22,9 @@ export class FeedbackResolver {
     @Arg("email", { nullable: true }) email?: string,
     @Arg("subject", { nullable: true }) subject?: string
   ) {
-    console.log(content)
-    console.log(email)
-    console.log(subject)
+    //console.log(content)
+    //console.log(email)
+    //console.log(subject)
     try {
       await Feedback.create({
         email,
@@ -39,9 +40,9 @@ export class FeedbackResolver {
       });
       const html = mjml(renderedEmail).html;
 
-      await mailClient.sendMail({
-        from: "info+adalo-components@pragmaflow.com",
-        to:"info@pragmaflow.com",
+      const result = await mailClient.sendMail({
+        from: "Adalo PragmaflowServers <adalo.pragmaflow@gmail.com>",
+        to: NOTIFICATION_EMAIL,
         subject: "Adalo Components Feedback Submitted",
         html
       });

@@ -13,7 +13,7 @@ const limiting = {
 const transportData = {
     host: EMAIL_HOST,
     port: EMAIL_PORT,
-    // secure: true, // use TLS
+    secure: true, // use TLS
     auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
