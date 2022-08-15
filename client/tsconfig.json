@@ -18,7 +18,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": [ //this solves the error: "JSON schema for the TypeScript compiler's configuration file, Cannot find type definition file for 'babel__template'."
+      "node_modules/@types",
+      "src/typings"
+    ] 
   },
   "include": [
     "src"
