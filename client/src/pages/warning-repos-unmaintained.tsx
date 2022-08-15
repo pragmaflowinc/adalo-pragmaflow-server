@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 
-export function unmaintainedWarning() {
-  return (
+export function UnmaintainedWarning() {
+  return(
     <Box>
         <Typography variant="h3" color="red">
             Please note that our Adalo components are NOT actively maintained by our

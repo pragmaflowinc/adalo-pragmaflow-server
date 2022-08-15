@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { UnmaintainedWarning } from "./warning-repos-unmaintained";
 
 export function Welcome() {
   return (
     <Box>
       <Typography variant="h1">Happy you came!</Typography>
-      <script>unmaintainedWarning();</script>
+      <UnmaintainedWarning />
       <br />
       <Typography>
         Hello from PragmaFlow Inc. and thanks for stopping in. It was a little

@@ -8,6 +8,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import * as MaterialIcons from '@mui/icons-material'
 import ArticleIcon from '@mui/icons-material/Article';
 import { styled } from '@mui/system'
+import { UnmaintainedWarning } from "./warning-repos-unmaintained";
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -36,6 +37,7 @@ export function InstallComponent() {
   return (
     <div>
       <Typography variant="h1">Install a component</Typography>
+      <UnmaintainedWarning />
       <Typography>Click this link <Link target="_blank" href="https://www.adalo.com/?via=pragmaflow">https://www.adalo.com/?via=pragmaflow</Link> we would really appreciate it. It just let's Adalo know that you all care about the work we are doing!</Typography>
       <Typography>Here you will be able to install components into your organization that are developed by PragmaFlow.</Typography>
       <Typography>To get started you will need an access token so we can install the components on your behalf. To get a token read this: <br />
