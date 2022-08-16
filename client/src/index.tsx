@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
  
 export const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql',
+  uri: 'https://adaloservers.pragmaflow.com/graphql',
   cache: new InMemoryCache()
 })
 

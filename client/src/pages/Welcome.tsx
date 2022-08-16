@@ -1,20 +1,16 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { UnmaintainedWarning } from "./warning-repos-unmaintained";
+import { UnmaintainedWarning } from "./WarningReposUnmaintained";
 
 export function Welcome() {
   return (
     <Box>
       <Typography variant="h1">Happy you came!</Typography>
       <UnmaintainedWarning />
-      <br />
+      
       <Typography>
-        Hello from PragmaFlow Inc. and thanks for stopping in. It was a little
-        touch an go for awhile there when we started getting off the ground. A
-        couple of shut-downs, an uncertain future, but thanks to community
-        support and some vocal activists we are back online, seemingly for good.
+        Hello from PragmaFlow Inc. We hope this collection of tools is useful. Sadly, many breaking changes have happened since we launched these and so there are several with known issues that we will not be able to invest in fixing.
       </Typography>
-      <br />
       <br />
       <Typography>
         If you feel up to it, and like what we are doing, feel free to click on
