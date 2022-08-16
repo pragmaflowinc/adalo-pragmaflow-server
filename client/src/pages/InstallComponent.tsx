@@ -2,13 +2,13 @@ import { useState, createElement } from 'react'
 import { useGetComponentsQuery, useInstallComponentMutation } from '../generated/graphql'
 import { Link as NavLink } from 'react-router-dom'
 import { CardHeader, CardContent, Button, TextField, Box, Typography, Link, Card, CardActions, Snackbar } from '@mui/material'
-import MailchimpSubscribe from "react-mailchimp-subscribe" 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import * as MaterialIcons from '@mui/icons-material'
 import ArticleIcon from '@mui/icons-material/Article';
 import { styled } from '@mui/system'
 import { UnmaintainedWarning } from "./WarningReposUnmaintained";
+
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";
 
@@ -44,8 +44,7 @@ export function InstallComponent() {
       <Link target="_blank" href="https://developers.adalo.com/docs/workflow/managing-private-libraries/#sharing-private-libraries-with-other-developers">https://developers.adalo.com/docs/workflow/managing-private-libraries/#sharing-private-libraries-with-other-developers</Link>
       </Typography><br />
     
-      <Typography>If you want to stay up to date with changes and additions to this site, leave us your email. This is a mailchimp form so you need to go through the mailchimp process.</Typography>
-      <MailchimpSubscribe url={url} />
+      <MailListSubForm />
 
       <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 1: Paste your developer token here</Typography>
       <Box
