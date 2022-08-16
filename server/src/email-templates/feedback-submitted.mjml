@@ -1,0 +1,36 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Nunito" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,400&display=swap" />
+  </mj-head>
+
+
+  <mj-body background-color="#FFF">
+    <mj-section>
+      <mj-column background-color="#1e488e" padding="20px">
+        <mj-image width="350px" src="https://images.squarespace-cdn.com/content/v1/5ed188736533665d5bd1c138/1615383138766-XW10G4KKJBS0MY1HLVYI/PragmaFlow_Logo+White.png"></mj-image>        
+      </mj-column>
+    </mj-section>
+
+    <mj-wrapper border="1px solid #EBEDEF" border-radius="4px" padding="15px 20px">
+      <mj-section>
+        <mj-column>
+          <mj-text padding-top="10px" padding-bottom="10px" font-size="40px" color="#000000" font-weight="bold" font-family="Nunito" align="center">Feedback Submitted</mj-text>
+          <mj-text font-size="16px" line-height="26px" color="#616162" font-family="Nunito">
+            <p>
+              <b>Sent By:</b> <em>{{email}}</em>
+              <br />
+              <b>Category:</b> <em>{{subject}}</em>
+              <br />
+              <b>Submitted:</b> {{createdAt}}
+            </p>            
+            <p>
+              <b>Comments:</b>
+              <br />
+              {{content}}
+            </p>
+          </mj-text>
+        </mj-column>
+      </mj-section>      
+    </mj-wrapper>
+  </mj-body>
+</mjml>
