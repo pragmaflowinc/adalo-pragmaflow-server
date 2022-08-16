@@ -8,6 +8,7 @@ import * as MaterialIcons from '@mui/icons-material'
 import ArticleIcon from '@mui/icons-material/Article';
 import { styled } from '@mui/system'
 import { UnmaintainedWarning } from "./WarningReposUnmaintained";
+import {MailListSubForm} from "./MailListSubForm";
 
 
 const url = "https://pragmaflow.us20.list-manage.com/subscribe/post?u=e0b0c6210f007d12879685ac3&amp;id=01a6a73410";

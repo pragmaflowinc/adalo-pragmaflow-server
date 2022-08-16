@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import { UnmaintainedWarning } from "./WarningReposUnmaintainedimport { MailListSubForm } from "./MailListSubForm";
+import { Box, Typography, Link } from "@mui/material";
+import { UnmaintainedWarning } from "./WarningReposUnmaintained";
+import { MailListSubForm } from "./MailListSubForm";
 
 export function Welcome() {
   return (
