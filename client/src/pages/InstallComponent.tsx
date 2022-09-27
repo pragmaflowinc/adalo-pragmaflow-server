@@ -37,84 +37,86 @@ export function InstallComponent() {
 
   return (
     <div>
-      <Typography variant="h1">Install a component</Typography>
+      <Typography variant="h1">Install a component IS BROKEN</Typography>
       <UnmaintainedWarning />
       <Typography>To sign up for adalo using our referal link <Link target="_blank" href="https://www.adalo.com/?via=pragmaflow">Click Here</Link> we would really appreciate it.</Typography><br />
-      <Typography>Here you will be able to install components into your organization that are developed by PragmaFlow.</Typography>
-      <Typography>To get started you will need an access token so we can install the components on your behalf. To get a token read this: <br />
-      <Link target="_blank" href="https://developers.adalo.com/docs/workflow/managing-private-libraries/#sharing-private-libraries-with-other-developers">https://developers.adalo.com/docs/workflow/managing-private-libraries/#sharing-private-libraries-with-other-developers</Link>
+      <Typography>Sadly, our installer does not work with the latest changes, you will need to install manually.</Typography>
+      <Typography> <br />
+      <Link target="_blank" href="https://forum.adalo.com/t/every-new-beginning-comes-from-some-other-beginnings-end/20485/48">Check here to see and example from James Agib on how to install a component manually</Link>
       </Typography><br />
     
       <MailListSubForm />
 
-      <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 1: Paste your developer token here</Typography>
-      <Box
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '50ch' },
-          alignItems: 'center',
-          display: 'flex'
-        }}>
-        <TextField variant="standard" value={accessToken} label="Adalo Access Token" onChange={e => {
-          const newAccessToken = e.currentTarget.value
-          setAccessToken(newAccessToken)
-        }}/>
-    </Box>
-    <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 2: Choose which components you would like to install/uninstall from your projects. Once you get a token the install/unistall buttons will appear.</Typography>
-    <Box sx={{
-      display: 'grid',
-      gap: 5,
-      gridTemplateColumns: "repeat(auto-fill, 350px)",
-      flexWrap: 'wrap'
-    }}>
-      {
-        componentData?.getComponents.map(component => (
-          <Card key={component.componentId} sx={{ color: 'black', ":root": { 'display': 'flex' } }}>
-            <CardHeader title={component.name} />
-            <CardContent>
-              <Box sx={{ display: 'grid', justifyItems: 'center' }}>
-                {/* @ts-ignore */}
-                {MaterialIcons[component.icon] && createElement(MaterialIcons[component.icon], { color: "primary", sx: { fontSize: 196 }})}
-                <Typography sx={{ marginTop: 1}} color="background">{component.description}</Typography>
-              </Box>
-              <div style={{ flexGrow: 1 }}></div>
-              <Link href={component.githubUrl} sx={{ margin: 1, fontSize: 32 }}><GitHubIcon /></Link>
-              { component.youtubeUrl && <Link href={component.youtubeUrl} sx={{ margin: 1, fontSize: 32 }}><YouTubeIcon /></Link> }
-              <StyledLink to={`/component-docs/${component.libraryName}`}><ArticleIcon sx={{ color: 'primary' }} /></StyledLink>
-            </CardContent>
-            { accessToken && (<CardActions>
-              <Button onClick={async (e) => {
-                try {
-                  const success = await installComponent({
-                    variables: {
-                      componentId: component.componentId,
-                      accessToken
-                    }
-                  })
-                  if (success) {
-                    setInstallationMessage("Installation Successful")
-                  } else {
-                    setInstallationMessage("Installation Failed, possibly wrong token, or you already installed it")
-                  }
-                } catch {
-                  setInstallationMessage("Installation Failed, possibly wrong token, or you already installed it")
-                  
-                }
-                setOpen(true)
-                  }}>
-                    Install
-                  </Button>
-            </CardActions> )
-            }
-          </Card>
-        ))
-      }
-    </Box>
-    <Snackbar
-  open={open}
-  autoHideDuration={6000}
-  onClose={handleClose}
-  message={installationMessage}
-/>
     </div>
+
+//       <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 1: Paste your developer token here</Typography>
+//       <Box
+//         sx={{
+//           '& .MuiTextField-root': { m: 1, width: '50ch' },
+//           alignItems: 'center',
+//           display: 'flex'
+//         }}>
+//         <TextField variant="standard" value={accessToken} label="Adalo Access Token" onChange={e => {
+//           const newAccessToken = e.currentTarget.value
+//           setAccessToken(newAccessToken)
+//         }}/>
+//     </Box>
+//     <Typography sx={{ marginTop: 2, marginBottom: 1 }}>Step 2: Choose which components you would like to install/uninstall from your projects. Once you get a token the install/unistall buttons will appear.</Typography>
+//     <Box sx={{
+//       display: 'grid',
+//       gap: 5,
+//       gridTemplateColumns: "repeat(auto-fill, 350px)",
+//       flexWrap: 'wrap'
+//     }}>
+//       {
+//         componentData?.getComponents.map(component => (
+//           <Card key={component.componentId} sx={{ color: 'black', ":root": { 'display': 'flex' } }}>
+//             <CardHeader title={component.name} />
+//             <CardContent>
+//               <Box sx={{ display: 'grid', justifyItems: 'center' }}>
+//                 {/* @ts-ignore */}
+//                 {MaterialIcons[component.icon] && createElement(MaterialIcons[component.icon], { color: "primary", sx: { fontSize: 196 }})}
+//                 <Typography sx={{ marginTop: 1}} color="background">{component.description}</Typography>
+//               </Box>
+//               <div style={{ flexGrow: 1 }}></div>
+//               <Link href={component.githubUrl} sx={{ margin: 1, fontSize: 32 }}><GitHubIcon /></Link>
+//               { component.youtubeUrl && <Link href={component.youtubeUrl} sx={{ margin: 1, fontSize: 32 }}><YouTubeIcon /></Link> }
+//               <StyledLink to={`/component-docs/${component.libraryName}`}><ArticleIcon sx={{ color: 'primary' }} /></StyledLink>
+//             </CardContent>
+//             { accessToken && (<CardActions>
+//               <Button onClick={async (e) => {
+//                 try {
+//                   const success = await installComponent({
+//                     variables: {
+//                       componentId: component.componentId,
+//                       accessToken
+//                     }
+//                   })
+//                   if (success) {
+//                     setInstallationMessage("Installation Successful")
+//                   } else {
+//                     setInstallationMessage("Installation Failed, possibly wrong token, or you already installed it")
+//                   }
+//                 } catch {
+//                   setInstallationMessage("Installation Failed, possibly wrong token, or you already installed it")
+                  
+//                 }
+//                 setOpen(true)
+//                   }}>
+//                     Install
+//                   </Button>
+//             </CardActions> )
+//             }
+//           </Card>
+//         ))
+//       }
+//     </Box>
+//     <Snackbar
+//   open={open}
+//   autoHideDuration={6000}
+//   onClose={handleClose}
+//   message={installationMessage}
+// />
+//     </div>
   )
 }
