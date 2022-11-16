@@ -1,5 +1,6 @@
 {
   "name": "adalo-pragmaflow-server",
+  "license": "MIT",
   "version": "1.0.0",
   "scripts": {
     "setup": "(cd client && yarn install); (cd server && yarn install)",
